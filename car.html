@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+ <meta charset="UTF-8">
+ <title>drift.html</title>
+ <script type = "text/javascript"
+   src = "simpleGame.js"></script>
+ <script type="text/javascript">
+ var game;
+ var boat;
+ function Boat(){
+  tBoat = new Sprite(game, "resources/car.png", 100, 50);
+  tBoat.checkKeys = function(){
+   console.log(this.speed);
+   if (keysDown[K_LEFT]){
+    this.changeImgAngleBy(-5);
+   }
+   if (keysDown[K_RIGHT]){
+    this.changeImgAngleBy(5);
+   }
+   if (keysDown[K_UP]){
+    this.addVector(this.getImgAngle(), 2);
+   }
+   this.addVector(this.getImgAngle(), (this.speed / 20));
+  } // end checkKeys
+  tBoat.checkDrag = function(){
+   speed = this.getSpeed();
+   speed *= .95;
+   this.setSpeed(speed);
+  }
+  return tBoat;
+ }
+ function init(){
+  game = new Scene();
+  game.setBG("#000066");
+  boat = new Boat();
+  game.start();
+ } // end init
+ function update(){
+  game.clear();
+  boat.checkKeys();
+  boat.checkDrag();
+  boat.update();
+ }
+ </script>
+</head>
+<body onload = "init()">
+</body>
+</html>

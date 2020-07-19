@@ -5,15 +5,19 @@ from pyglet.window import key
 from . import physicalobject
 from . import resources
 from . import load
-import numpy as np
 
-class Player(physicalobject.PhysicalObject):
+
+class Reward:
     """Physical object that responds to user input"""
 
     def __init__(self, *args, **kwargs):
-        super(Player, self).__init__(img=resources.car_image, *args, **kwargs)
+        self.x1=0;
+        self.y1 = 0;
+        self.x2 = 0;
+        self.y2 = 0;
+
         self.thrust = 1300.0
-        self.rotate_speed = 250.0
+        self.rotate_speed = 200.0
         # self.slow_down_speed=
         # self.speed = 0;
         self.rotation = -90
@@ -82,26 +86,4 @@ class Player(physicalobject.PhysicalObject):
 
         # if self.keys['down']:
         #     self.speed-=.5;
-    def update(self, dt):
-        # Do all the normal physics stuff
-        super(Player, self).update(dt)
 
-        self.check_keys(dt)
-        # print(self.rotation );
-
-
-    def delete(self):
-        # We have a child sprite which must be deleted when this object
-        # is deleted from batches, etc.
-        # self.engine_sprite.delete()
-        super(Player, self).delete()
-
-    def reset(self):
-        self.velocity_x=0
-        self.velocity_y = 0
-        self.rotation = -90
-        self.x = 309
-        self.y = 379
-
-    def get_state_arr(self):
-        return [self.x,self.y,self.velocity_x,self.velocity_y,self.rotation];

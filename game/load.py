@@ -1,15 +1,17 @@
 import pyglet, math, random
-import physicalobject, resources, enemy
-
+# import game.physicalobject, game.resources, game.enemy
+from . import physicalobject
+from . import resources
+from . import enemy
 def distance(point_1=(0, 0), point_2=(0, 0)):
     """Returns the distance between two points"""
     return math.sqrt((point_1[0]-point_2[0])**2+(point_1[1]-point_2[1])**2)
 
 def cars(batch=None):
     new_sprite = pyglet.sprite.Sprite(img=resources.car_image, 
-                                          x=350, y=60, 
+                                          x=309, y=379,
                                           batch=batch)
-    new_sprite.scale = 0.06
+    new_sprite.scale = 0.03
     return new_sprite
 
 def gen_enemies(num_icons, start_y=120, batch=None):

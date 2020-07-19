@@ -1,5 +1,6 @@
-import physicalobject, resources , load
-
+from . import physicalobject
+from . import resources
+from . import load
 
 class Enemy(physicalobject.PhysicalObject):
     def __init__(self, *args, **kwargs):
